@@ -1,54 +1,64 @@
 #include<stdio.h>
-#define max 5
+#include<stdlib.h>
+
+#define MAX 3
+int stack[3];
 int top=-1;
-int stack[5];
-void push (int val){
-    if(top==max-1){
-     printf("overflow");
+void push(int v){
+    if(top==MAX-1){
+        printf("stack is overflow");
+
     }else{
-     stack[++top]=val;
-     printf("added %d",val);
-         }
+        stack[++top]=v;
+        printf("%d is pushed in stack",v);
+
+    }
 }
 void pop(){
-   if(top==-1){
-    printf("underflow");
-   }else{
-    int p = stack[top];
-    printf("popped %d\n",p);
-    top--;
-   }
+    if(top==-1){
+        printf("stack is underflow");
+    }else{
+        int p=stack[top];
+        printf("%d is popped from stack",p);
+        top--;
+    }
 }
 void display(){
-    if(top==-1){
-    printf("empty stack");
+if(top==-1){
+    printf("stack is empty");
 }else{
-   for(int i=top;i>=0;i--)
-    {
-       printf("%d\n",stack[i]);
-   }
+    for(int i=top;i>=0;i--){
+        printf("%d\n",stack[i]);
+    }
 }
 }
 int main(){
-   int t=1;
-  while(t!=0){
-   int c;
-    printf("enter1:push,2:pop,3:display");
-    scanf("%d",&c);
-   switch(c){
+    int c;
+    while(1){
+        printf("\n1.push\n2.pop\n3.display\n4.exit\n");
+        printf("enter choice:");
+        scanf("%d",&c);
+    
+    switch(c){
         case 1:
-       printf("enter value");
+        printf("enter value to be pushed");
         int a;
-       scanf("%d",&a);
+        scanf("%d",&a);
         push(a);
-       break;
-        case 2:pop();
-       break;
-        case 3:display();
-       break;
-        default:printf("invalid choice");
-       int t=0;
         break;
-}
+        case 2:
+        pop();
+        break;
+        case 3:
+        display();
+        break;
+        case 4:
+        exit(0);
+        break;
+        default:
+        printf("please enter valid choice");
+        break;
     }
+    }
+    return 0;
 }
